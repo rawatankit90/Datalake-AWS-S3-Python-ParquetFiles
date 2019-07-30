@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "E:\Udacity\Data engineer\Project 4 - Data Lakes\Project\etl.py", line 214, in <module>
+    main()
+  File "E:\Udacity\Data engineer\Project 4 - Data Lakes\Project\etl.py", line 201, in main
+    spark = create_spark_session()
+  File "E:\Udacity\Data engineer\Project 4 - Data Lakes\Project\etl.py", line 45, in create_spark_session
+    .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:2.7.0") \
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\site-packages\pyspark\sql\session.py", line 173, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\site-packages\pyspark\context.py", line 367, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\site-packages\pyspark\context.py", line 133, in __init__
+    SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\site-packages\pyspark\context.py", line 316, in _ensure_initialized
+    SparkContext._gateway = gateway or launch_gateway(conf)
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\site-packages\pyspark\java_gateway.py", line 46, in launch_gateway
+    return _launch_gateway(conf)
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\site-packages\pyspark\java_gateway.py", line 101, in _launch_gateway
+    proc = Popen(command, stdin=PIPE, env=env)
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\subprocess.py", line 709, in __init__
+    restore_signals, start_new_session)
+  File "C:\Users\Divya Gupta\AppData\Local\Programs\Python\Python36-32\lib\subprocess.py", line 997, in _execute_child
+    startupinfo)
+FileNotFoundError: [WinError 2] The system cannot find the file specified

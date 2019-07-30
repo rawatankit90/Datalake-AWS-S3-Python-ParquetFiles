@@ -1,0 +1,80 @@
+Starting ETL at 2019-07-30 16:02:50.408824
+Creating Spark session at 2019-07-30 16:02:50.408824
+---------------------------------------------------------------------------
+FileNotFoundError                         Traceback (most recent call last)
+<ipython-input-1-d42b5dc069f5> in <module>
+    212 
+    213 if __name__ == "__main__":
+--> 214     main()
+
+<ipython-input-1-d42b5dc069f5> in main()
+    199 
+    200     print('Starting ETL at', dt.now())
+--> 201     spark = create_spark_session()
+    202 
+    203     # song_input_data =
+
+<ipython-input-1-d42b5dc069f5> in create_spark_session()
+     43     spark = SparkSession \
+     44         .builder \
+---> 45         .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:2.7.0") \
+     46         .getOrCreate()
+     47 
+
+E:\Anaconda\lib\site-packages\pyspark\sql\session.py in getOrCreate(self)
+    171                     for key, value in self._options.items():
+    172                         sparkConf.set(key, value)
+--> 173                     sc = SparkContext.getOrCreate(sparkConf)
+    174                     # This SparkContext may be an existing one.
+    175                     for key, value in self._options.items():
+
+E:\Anaconda\lib\site-packages\pyspark\context.py in getOrCreate(cls, conf)
+    365         with SparkContext._lock:
+    366             if SparkContext._active_spark_context is None:
+--> 367                 SparkContext(conf=conf or SparkConf())
+    368             return SparkContext._active_spark_context
+    369 
+
+E:\Anaconda\lib\site-packages\pyspark\context.py in __init__(self, master, appName, sparkHome, pyFiles, environment, batchSize, serializer, conf, gateway, jsc, profiler_cls)
+    131                     " note this option will be removed in Spark 3.0")
+    132 
+--> 133         SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+    134         try:
+    135             self._do_init(master, appName, sparkHome, pyFiles, environment, batchSize, serializer,
+
+E:\Anaconda\lib\site-packages\pyspark\context.py in _ensure_initialized(cls, instance, gateway, conf)
+    314         with SparkContext._lock:
+    315             if not SparkContext._gateway:
+--> 316                 SparkContext._gateway = gateway or launch_gateway(conf)
+    317                 SparkContext._jvm = SparkContext._gateway.jvm
+    318 
+
+E:\Anaconda\lib\site-packages\pyspark\java_gateway.py in launch_gateway(conf)
+     44     :return: a JVM gateway
+     45     """
+---> 46     return _launch_gateway(conf)
+     47 
+     48 
+
+E:\Anaconda\lib\site-packages\pyspark\java_gateway.py in _launch_gateway(conf, insecure)
+     99             else:
+    100                 # preexec_fn not supported on Windows
+--> 101                 proc = Popen(command, stdin=PIPE, env=env)
+    102 
+    103             # Wait for the file to appear, or for the process to exit, whichever happens first.
+
+E:\Anaconda\lib\subprocess.py in __init__(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, encoding, errors, text)
+    773                                 c2pread, c2pwrite,
+    774                                 errread, errwrite,
+--> 775                                 restore_signals, start_new_session)
+    776         except:
+    777             # Cleanup if the child failed starting.
+
+E:\Anaconda\lib\subprocess.py in _execute_child(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, unused_restore_signals, unused_start_new_session)
+   1176                                          env,
+   1177                                          os.fspath(cwd) if cwd is not None else None,
+-> 1178                                          startupinfo)
+   1179             finally:
+   1180                 # Child is launched. Close the parent's copy of those pipe
+
+FileNotFoundError: [WinError 2] The system cannot find the file specified
