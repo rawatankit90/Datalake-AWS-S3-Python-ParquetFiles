@@ -9,7 +9,7 @@ and want to do analysis on what songs the users are listening to by doing analyt
 search on the data.As of now the information is store in JSON files and other metadata 
 files and there is no easy way to search. The ta
 
-As their data engineer, you are tasked with building an ETL pipeline that extracts their
+As their data engineer tasked with building an ETL pipeline that extracts their
 data from S3, processes them using Spark, and loads the data back into S3 as a set of
 dimensional tables. This will allow their analytics team to continue finding insights
 in what songs their users are listening to.
